@@ -16,8 +16,9 @@ class BillingCycleList extends Component{
                 <td>{billingCycleResp.name}</td>
                 <td>{billingCycleResp.month}</td>
                 <td>{billingCycleResp.year}</td>
+                <td><button disabled="disabled" >Teste</button></td>
             </tr>
-        ))
+        ));
     }
 
     render(){
