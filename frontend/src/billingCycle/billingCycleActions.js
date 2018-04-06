@@ -1,5 +1,9 @@
 import axios from 'axios';
+import {toastr} from 'react-redux-toastr';
+import {reset as resetForm, initialize} from 'redux-form';
+import {showTabs, selectTab} from '../common/tab/tabActions';
 const BASE_URL = 'http://localhost:3003/api';
+const INITIAL_VELUES = {};
 
 export function getList() {
     const request = axios.get(`${BASE_URL}/billingCycles`);
@@ -11,8 +15,41 @@ export function getList() {
 }
 
 export function create(values){
-    axios.post(`${BASE_URL}/billingCycles`,values);
-    return {
-        type: 'TEMP'
+    return submit(values, 'POST', 'Dados inseridos com sucesso.');
+}
+
+export function update(values){
+    return submit(values, 'PUT', 'Dados atualizados com sucesso no sistema.');
+}
+
+function submit(values, method, msg){
+    return dispatch => {
+        const id = values._id ? values._id : '';
+        axios[method](`${BASE_URL}/billingCycles/${id}`,values)
+        .then(resp => {
+            toastr.success('Sucesso', msg);
+            dispatch(init());
+        })
+        .catch(e =>{
+            e.reponse.data.errors.forEach(element => toastr.error('Erro', error));
+        });
     }
+}
+
+export function init(){
+    return [
+        showTabs('tabList', 'tabCreate'),
+        selectTab('tabList'),
+        getList(),
+        initialize('billingCycleForm', INITIAL_VELUES)
+    ]
+}
+
+
+export function showUpdate(billingCycle){
+    return [
+        showTabs('tabUpdate'),
+        selectTab('tabUpdate'),
+        initialize('billingCycleForm', billingCycle)
+    ]
 }
