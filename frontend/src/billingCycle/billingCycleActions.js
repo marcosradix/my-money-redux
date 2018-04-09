@@ -22,7 +22,11 @@ export function update(values){
     return submit(values, 'PUT', 'Dados atualizados com sucesso no sistema.');
 }
 
-function submit(values, method, msg){
+export function remove(values){
+    return submit(values, 'DELETE', 'O registro foi removido com sucesso.');
+}
+
+function submit(values, method, msg, tipoMsg){
     return dispatch => {
         const id = values._id ? values._id : '';
         axios[method](`${BASE_URL}/billingCycles/${id}`,values)
@@ -56,8 +60,8 @@ export function showUpdate(billingCycle){
 
 export function showDelete(billingCycle){
     return [
-        showTabs('tabUpdate'),
-        selectTab('tabUpdate'),
+        showTabs('tabDelete'),
+        selectTab('tabDelete'),
         initialize('billingCycleForm', billingCycle)
     ]
 }
