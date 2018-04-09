@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
+//import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import If from '../operador/if';
 
@@ -20,4 +20,4 @@ class TabContent extends Component{
 
 const mapStateToProps = state => ({tab: state.tab});
 //const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
-export default connect(mapStateToProps)(TabContent);
+export default connect(mapStateToProps, null)(TabContent);
