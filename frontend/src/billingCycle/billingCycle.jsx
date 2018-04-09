@@ -17,7 +17,7 @@ import {create, update} from './billingCycleActions';
 class BillingCycle extends Component{
 
     componentWillMount(){
-        this.props.selectedTab('tabList');
+        this.props.selectTab('tabList');
         this.props.showTabs('tabList', 'tabCreate');
     }
 
@@ -57,5 +57,5 @@ class BillingCycle extends Component{
 
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({selectedTab, showTabs, create, update}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs, create, update}, dispatch);
 export default connect(null, mapDispatchToProps)(BillingCycle);

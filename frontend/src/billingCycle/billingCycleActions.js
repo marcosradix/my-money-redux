@@ -31,7 +31,7 @@ function submit(values, method, msg){
             dispatch(init());
         })
         .catch(e =>{
-            e.reponse.data.errors.forEach(element => toastr.error('Erro', error));
+            e.reponse.data.errors.forEach(error => toastr.error('Erro', error));
         });
     }
 }
@@ -47,6 +47,14 @@ export function init(){
 
 
 export function showUpdate(billingCycle){
+    return [
+        showTabs('tabUpdate'),
+        selectTab('tabUpdate'),
+        initialize('billingCycleForm', billingCycle)
+    ]
+}
+
+export function showDelete(billingCycle){
     return [
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
