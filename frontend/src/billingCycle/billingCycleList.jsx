@@ -6,7 +6,6 @@ import {getList, showUpdate, showDelete} from './billingCycleActions';
 class BillingCycleList extends Component{
     componentWillMount(){
         this.props.getList();
-        //console.log(this.props.list);
     }
 
     renderRows(){
@@ -39,7 +38,7 @@ class BillingCycleList extends Component{
                             <th>Nome</th>
                             <th>Mês</th>
                             <th>Ano</th>
-                            <th>Ações</th>
+                            <th className='table-actions' >Ações</th>
                         </tr>
                     </thead>
                     <tbody>
