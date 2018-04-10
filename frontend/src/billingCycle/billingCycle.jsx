@@ -47,7 +47,7 @@ class BillingCycle extends Component{
                           </TabContent>
 
                           <TabContent id='tabDelete' >
-                          <Form onSubmit={this.props.remove} readyOnly={true} />
+                          <Form onSubmit={this.props.remove} readOnly={true} />
                           </TabContent>
 
                       </TabsContent>

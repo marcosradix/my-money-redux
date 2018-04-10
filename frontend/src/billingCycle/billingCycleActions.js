@@ -3,7 +3,7 @@ import {toastr} from 'react-redux-toastr';
 import {initialize} from 'redux-form';
 import {showTabs, selectTab} from '../common/tab/tabActions';
 const BASE_URL = 'http://localhost:3003/api';
-const INITIAL_VELUES = {};
+const INITIAL_VALUES = {};
 
 export function getList() {
     const request = axios.get(`${BASE_URL}/billingCycles`);
@@ -15,18 +15,18 @@ export function getList() {
 }
 
 export function create(values){
-    return submit(values, 'POST', 'Dados inseridos com sucesso.');
+    return submit(values, 'post', 'Dados inseridos com sucesso.');
 }
 
 export function update(values){
-    return submit(values, 'PUT', 'Dados atualizados com sucesso no sistema.');
+    return submit(values, 'put', 'Dados atualizados com sucesso no sistema.');
 }
 
 export function remove(values){
-    return submit(values, 'DELETE', 'O registro foi removido com sucesso.');
+    return submit(values, 'delete', 'O registro foi removido com sucesso.');
 }
 
-function submit(values, method, msg, tipoMsg){
+function submit(values, method, msg){
     return dispatch => {
         const id = values._id ? values._id : '';
         axios[method](`${BASE_URL}/billingCycles/${id}`,values)
@@ -45,7 +45,7 @@ export function init(){
         showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
         getList(),
-        initialize('billingCycleForm', INITIAL_VELUES)
+        initialize('billingCycleForm', INITIAL_VALUES)
     ]
 }
 
