@@ -13,7 +13,7 @@ class Dashboard extends Component{
     }
 
     render(){
-        const {credit, debit} = this.props.summary;
+        const {credit, debit} = this.props.summary || {credit:0, debit:0};
         return (
             <div>
                 <ContentHeader title='Dashboard' small='Versão 1.0' />

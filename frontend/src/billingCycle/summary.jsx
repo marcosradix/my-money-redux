@@ -3,10 +3,12 @@ import React from 'react';
 import Grid from '../common/layout/grid';
 import Row from '../common/layout/row';
 import ValueBox from '../common/widget/valueBox';
+import Content from '../common/template/content';
 
 export default ({credit, debit}) =>(
-<Grid cols='12'>
+<Grid cols='12 4'>
     <fieldset >
+    <Content container='container'>
         <legend>Resumo</legend>
         <Row>
             <ValueBox cols='12 4' color='green' icon='bank'
@@ -18,8 +20,8 @@ export default ({credit, debit}) =>(
               <ValueBox cols='12 4' color='blue' icon='money'
             value={`R$ ${credit - debit}`}  text='Valor consolidado' />
         </Row>
+        </Content>
     </fieldset>
-
 </Grid>
 
 );

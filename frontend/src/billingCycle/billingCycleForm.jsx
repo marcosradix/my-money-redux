@@ -25,15 +25,18 @@ class BillingCycleForm extends Component{
                 <div className="box-body">
                     <Field name='name' component={LabelAndInput} readOnly={readOnly}
                     label='Nome' cols='12 4' placeholder='Informe o nome' type='text' />
+
                     <Field name='month' component={LabelAndInput} readOnly={readOnly}
                     label='Mês' cols='12 4' placeholder='Informe o mês' type='text' />
+                    
                     <Field name='year' component={LabelAndInput} readOnly={readOnly}
                     label='Ano' cols='12 4' placeholder='Informe o ano' type='text' />
 
                         <Summary credit={somaDeCreditos} debit={somaDeDebitos} />
-
+                    <div className='teste' >
                     <ItemList cols='12 6' list={credits} readOnly={readOnly}  fiel='credits' legend='Créditos' />
                     <ItemList cols='12 6' list={debits} readOnly={readOnly}  fiel='debits' legend='Débitos' showStatus={true} />
+                    </div>
                 </div>
 
                 <div className="box-footer">

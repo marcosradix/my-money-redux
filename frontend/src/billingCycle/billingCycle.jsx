@@ -23,7 +23,7 @@ class BillingCycle extends Component{
         return (
            <div>
                <ContentHeader title='Ciclos de Pagamentos' small='Cadastro' />
-               <Content container='container' >
+               <Content container='' >
                   <Tabs>
                       <TabsHeader>
                           <TabHeader label='Listar' icon='bars' target='tabList' />
