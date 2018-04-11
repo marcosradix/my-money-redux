@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {reduxForm, Field, formValueSelector} from 'redux-form';
 import LabelAndInput from '../common/form/labelAndInput';
-import CreditList from './creditList';
+import ItemList from './itemList';
 import {init} from './billingCycleActions';
-
+import Summary from './summary';
 
 class BillingCycleForm extends Component{
 
     render(){
-        const {handleSubmit, readOnly, credits} = this.props;
+        const {handleSubmit, readOnly, credits , debits} = this.props;
         return(
             <form  onSubmit={handleSubmit} >
                 <div className="box-body">
@@ -20,7 +20,11 @@ class BillingCycleForm extends Component{
                     label='Mês' cols='12 4' placeholder='Informe o mês' type='text' />
                     <Field name='year' component={LabelAndInput} readOnly={readOnly}
                     label='Ano' cols='12 4' placeholder='Informe o ano' type='text' />
-                    <CreditList cols='12 6' list={credits} readOnly={readOnly} />
+
+                        <Summary credit={1000} debit={100} />
+
+                    <ItemList cols='12 6' list={credits} readOnly={readOnly}  fiel='credits' legend='Créditos' />
+                    <ItemList cols='12 6' list={debits} readOnly={readOnly}  fiel='debits' legend='Débitos' showStatus={true} />
                 </div>
 
                 <div className="box-footer">
@@ -36,6 +40,6 @@ class BillingCycleForm extends Component{
 
 BillingCycleForm = reduxForm({form: 'billingCycleForm', destroyOnUnmount: false})(BillingCycleForm);
 const selector = formValueSelector('billingCycleForm');
-const mapStateToProps = state => ({credits: selector(state, 'credits')});
+const mapStateToProps = state => ({credits: selector(state, 'credits'), debits: selector(state, 'debits')});
 const mapDispatchToProps = dispatch => bindActionCreators({init}, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleForm);
