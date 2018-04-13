@@ -12,14 +12,15 @@ class BillingCycleForm extends Component{
     calculateSummary(){
         const sum = (totalizador, valorAtual) => totalizador + valorAtual;
         return {
-            somaDeCreditos: this.props.credits.map(valorCredito => +valorCredito.value || 0).reduce(sum),
-            somaDeDeditos: this.props.credits.map(valorDedito => +valorDedito.value || 0).reduce(sum)
+            somaCreditos: this.props.credits.map(c => +c.value || 0).reduce(sum),
+            somaDebitos: this.props.debits.map(d => +d.value || 0).reduce(sum)
         }
     }
 
     render(){
         const {handleSubmit, readOnly, credits , debits} = this.props;
-        const {somaDeCreditos, somaDeDebitos} = this.calculateSummary();
+        console.log("saida "+credits + "saida "+debits);
+        const {somaCreditos, somaDebitos} = this.calculateSummary();
         return(
             <form  onSubmit={handleSubmit} >
                 <div className="box-body">
@@ -32,7 +33,7 @@ class BillingCycleForm extends Component{
                     <Field name='year' component={LabelAndInput} readOnly={readOnly}
                     label='Ano' cols='12 4' placeholder='Informe o ano' type='text' />
 
-                        <Summary credit={somaDeCreditos} debit={somaDeDebitos} />
+                        <Summary credit={somaCreditos} debit={somaDebitos} />
                     <div className='teste' >
                     <ItemList cols='12 6' list={credits} readOnly={readOnly}  fiel='credits' legend='Créditos' />
                     <ItemList cols='12 6' list={debits} readOnly={readOnly}  fiel='debits' legend='Débitos' showStatus={true} />

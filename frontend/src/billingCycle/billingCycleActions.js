@@ -35,7 +35,7 @@ function submit(values, method, msg){
             dispatch(init());
         })
         .catch(e =>{
-            e.reponse.data.errors.forEach(error => toastr.error('Erro', error));
+            e.response.data.errors.forEach(error => toastr.error('Erro', error));
         });
     }
 }
