@@ -12,14 +12,13 @@ class BillingCycleForm extends Component{
     calculateSummary(){
         const sum = (totalizador, valorAtual) => totalizador + valorAtual;
         return {
-            somaCreditos: this.props.credits.map(c => +c.value || 0).reduce(sum),
-            somaDebitos: this.props.debits.map(d => +d.value || 0).reduce(sum)
+            somaCreditos: this.props.credits.map(c => +c.value || 0).reduce(sum, 0),
+            somaDebitos: this.props.debits.map(d => +d.value || 0).reduce(sum, 0)
         }
     }
 
     render(){
         const {handleSubmit, readOnly, credits , debits} = this.props;
-        console.log("saida "+credits + "saida "+debits);
         const {somaCreditos, somaDebitos} = this.calculateSummary();
         return(
             <form  onSubmit={handleSubmit} >

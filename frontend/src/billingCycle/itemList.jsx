@@ -12,6 +12,7 @@ add(index, item = {}){
     if(!this.props.readOnly){
         this.props.arrayInsert('billingCycleForm', this.props.field, index, item);
     }
+    console.log('saida de valor', index, item)
 }
 
 remove(index){
